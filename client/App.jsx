@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, } from 'react-router-dom';
 
-import CreateClass from './components/CreateClass';
+import CreateClass from './components/CreateClass.jsx';
 import SeatingChart from './components/SeatingChart';
 
 const App = props => {
