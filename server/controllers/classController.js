@@ -45,14 +45,15 @@ classController.addClass = (req, res, next) => {
       res.locals.userInfo = data;
       console.log('Data returned from db in addClass middleware', data);
       return next();
-    }).catch(err => 
-        next(createErr({
-          method: 'addClass',
-          type: 'saving to database',
-          err,
-          status: 500
-        }))
-      );
+    })
+    .catch(err => 
+      next(createErr({
+        method: 'addClass',
+        type: 'saving to database',
+        err,
+        status: 500
+      }))
+    );
 };
 
 module.exports = classController;

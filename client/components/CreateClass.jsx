@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // custom hook (note the call to useState) to handle input boxes
 // prevents need for onChange handlers for each input
@@ -14,6 +14,9 @@ const useInput = init => {
 }
 
 const CreateClass = props => {
+  // navigate is an instance of the useNavigate hook
+  // enables rerouting upon successful class creation
+  const navigate = useNavigate();
 
   const [ period, periodOnChange ] = useInput('');
   const [ roster, rosterOnChange ] = useInput('');
@@ -24,20 +27,35 @@ const CreateClass = props => {
     // check if period or roster is empty
     if (period.trim() === '') {
       setPeriodError('Period is required');
+      return;
     }
     if (roster.trim() === '') {
       setRosterError('Roster is required');
-    } else {
-      const body = {
-        period,
-        roster
-      };
-      // use fetch to make a POST request to /api/class
-      // upon successful POST request, navigate back to home
-      // see these links: 
-      // https://github.com/remix-run/react-router/blob/main/docs/upgrading/v5.md#use-usenavigate-instead-of-usehistory
-      // https://reactrouter.com/docs/en/v6/hooks/use-navigate 
-    }
+      return;
+    } 
+    const body = {
+      period,
+      roster
+    };
+    // use fetch to make a POST request to /api/class
+    // upon successful POST request, navigate to SeatingChart
+    fetch('/api/class', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'Application/JSON'
+      },
+      body: JSON.stringify(body)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log('Data returned from db in CreateClass frontend file', data);
+    })
+    .then(() => {
+      navigate('/seatingchart');
+    })
+    .catch(err => {
+      console.log('CreateClass fetch /api/class: ERROR:', err);
+    });
   }
 
   // if period changes, setPeriodError to be null (no error message displayed)
