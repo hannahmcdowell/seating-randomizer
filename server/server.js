@@ -20,6 +20,10 @@ app.use(express.static(path.resolve(__dirname, '../client')));
  */
 
 /**
+ * route handler to serve routes via react-router
+ */
+
+/**
  * route handler for any requests to an unknown route
  */
 app.use((req, res) => res.status(404).send('Page not found.'));
