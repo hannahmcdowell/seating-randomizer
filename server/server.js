@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
+const apiRouter = require('./routes/api');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -28,9 +29,10 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 /**
  * route handlers
  */
+app.use('/api', apiRouter);
 
 /**
- * route handler to serve routes via react-router
+ * route handler to serve routes via react-router ?
  */
 
 /**
