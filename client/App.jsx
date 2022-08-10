@@ -9,8 +9,8 @@ const App = props => {
     <div className="router">
       <main className="main">
         <Routes>
-          <Route path='/class' component={CreateClass} />
-          <Route path='/seatingchart' component={SeatingChart} />
+          <Route path="class" element={CreateClass} />
+          <Route path="seatingchart" element={SeatingChart} />
         </Routes>
       </main>
     </div>

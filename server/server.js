@@ -19,7 +19,6 @@ app.use(express.static(path.resolve(__dirname, '../client')));
  * route handlers
  */
 
-
 /**
  * route handler for any requests to an unknown route
  */
