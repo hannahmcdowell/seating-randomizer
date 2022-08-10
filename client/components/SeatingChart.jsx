@@ -7,4 +7,4 @@ const SeatingChart = props => {
   );
 }
 
-export default withRouter(SeatingChart);
+export default SeatingChart;

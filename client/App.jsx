@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import { Switch, Route, } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
-import CreateClass from './components/CreateClass.jsx';
+import CreateClass from './components/CreateClass';
 import SeatingChart from './components/SeatingChart';
 
 const App = props => {
   return (
     <div className="router">
       <main className="main">
-        <Switch>
-          <Route exact path='/class' component={CreateClass} />
-          <Route exact path='/seatingchart' component={SeatingChart} />
-        </Switch>
+        <Routes>
+          <Route path='/class' component={CreateClass} />
+          <Route path='/seatingchart' component={SeatingChart} />
+        </Routes>
       </main>
     </div>
   );

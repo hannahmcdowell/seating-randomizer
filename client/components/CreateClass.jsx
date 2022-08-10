@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const CreateClass = props => {
   return (
@@ -7,4 +7,4 @@ const CreateClass = props => {
   );
 }
 
-export default withRouter(CreateClass);
+export default CreateClass;
