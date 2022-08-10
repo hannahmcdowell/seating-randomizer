@@ -1,8 +1,18 @@
 const path = require('path');
 const express = require('express');
+const mongoose = require('mongoose');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// connect to mongodb 
+const mongoURI = 'mongodb://localhost/solo-project';
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('Connected to Mongo DB.'))
+  .catch(err => console.log(err));
 
 /**
  * handle parsing request body
