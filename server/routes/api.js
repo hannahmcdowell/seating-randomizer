@@ -11,4 +11,9 @@ router.post('/class',
   (req, res) => res.status(200).json(res.locals.userInfo)
 );
 
+router.get('/class', 
+  classController.classes,
+  (req, res) => res.status(200).json(res.locals.classInfo)
+);
+
 module.exports = router;

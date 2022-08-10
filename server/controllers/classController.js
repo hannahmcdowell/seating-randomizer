@@ -39,7 +39,7 @@ classController.addClass = (req, res, next) => {
       roster: rosterArray
     }]
   };
-
+  
   User.create(userWithClass)
     .then(data => {
       res.locals.userInfo = data;
@@ -55,5 +55,41 @@ classController.addClass = (req, res, next) => {
       }))
     );
 };
+
+classController.classes = (req, res, next) => {
+  const requestedUser = req.query;
+  // if missing requestedUser from req.query, throw error
+  if (!requestedUser) {
+    return next(createErr({
+      method: 'classes',
+      type: 'missing username information on req.query',
+      err: 'incorrect info on req.query',
+      status: 400
+    }));
+  }
+
+  User.findOne(requestedUser).exec()
+    .then(data => {
+      console.log('Data returned from db in classes middleware', data);
+      if (data === null) {
+        return next(createErr({
+          method: 'classes',
+          type: 'username doesn\'t exist in database',
+          err: 'no user exists',
+          status: 400
+        }));
+      }
+      res.locals.classInfo = data;
+      return next();
+    })
+    .catch(err => 
+      next(createErr({
+        method: 'classes',
+        type: 'retrieving from database',
+        err,
+        status: 500
+      }))
+    );
+}
 
 module.exports = classController;
