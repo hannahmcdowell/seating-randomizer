@@ -15,13 +15,14 @@ module.exports = {
     port: 8080,
     // enable HMR on the devServer
     hot: true,
+    // fallback to root for other urls (needed for react-route)
+    historyApiFallback: true,
     static: {
       // match the output path
       directory: path.resolve(__dirname, 'dist'),
       // match the output 'publicPath'
       publicPath: '/',
     },
-
     headers: { 'Access-Control-Allow-Origin': '*' },
     /**
      * proxy is required in order to make api calls to
@@ -52,6 +53,11 @@ module.exports = {
         test: /.(css|scss)$/,
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.js$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
       }
     ],
   },
