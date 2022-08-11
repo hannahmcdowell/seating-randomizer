@@ -39,8 +39,7 @@ const useInput = (init, bool, resetBool) => {
 
 const SeatingChartContainer = props => {
   // use custom hook to asychronously get user data
-  // if login is implemented, change the arg to be the name of the user
-  const { userData, error, loading } = useAsyncData('Stacy');
+  const { userData, error, loading } = useAsyncData(props.username);
   const [ isSubmitted, setIsSubmitted ] = useState(false);
   const [ selectedPeriod, periodOnChange ] = useInput('', isSubmitted, setIsSubmitted);
   const [ selectedGroupSize, groupSizeOnChange ] = useInput('', isSubmitted, setIsSubmitted);
