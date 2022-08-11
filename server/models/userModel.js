@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const SALT_WORK_FACTOR = 12;
 
 // if implmenting login, change so that username must be unique.
@@ -15,7 +15,7 @@ const userSchema = new Schema({
   }]
 });
 
-userSchema.pre('save', (next) => {
+userSchema.pre('save', function(next) {
   const hash = bcrypt.hashSync(this.password, SALT_WORK_FACTOR);
   this.password = hash;
   next();
