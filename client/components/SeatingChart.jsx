@@ -29,6 +29,7 @@ const useInput = init => {
   const [ value, setValue ] = useState(init);
   const onChange = e => {
     setValue(e.target.value);
+    console.log('Value has changed to:', e.target.value);
   }
   return [ value, onChange ];
 };
@@ -38,8 +39,9 @@ const SeatingChart = props => {
   // if login is implemented, change the arg to be the name of the user
   const { userData, error, loading } = useAsyncData('Hannah');
   const [ selectedPeriod, periodOnChange ] = useInput('');
+  const [ selectedGroupSize, groupSizeOnChange ] = useInput('');
 
-  // TODO: add functionality to handle errors
+  // TODO: add functionality to handle errors from data retrieval
   let radioButtons;
   if (!loading && !error) {
     radioButtons = userData.periods.map((period, i) => {
@@ -57,6 +59,13 @@ const SeatingChart = props => {
     });
   } 
 
+  const groupSizeOptions = [];
+  for (let i = 2; i <= 8; i++) {
+    groupSizeOptions.push(
+      <option key={'option' + i} value={i}>{i}</option>
+    );
+  }
+
   return (
     <section className="seatingChartContainer">
       <header className="pageHeader">
@@ -68,15 +77,9 @@ const SeatingChart = props => {
           {radioButtons}
         </div>
         <p className="labelText">Group Size:</p>
-        <select>
+        <select value={selectedGroupSize} onChange={groupSizeOnChange}>
           <option>Choose...</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
+          {groupSizeOptions}
         </select>
       </div>
     </section>
