@@ -2,13 +2,14 @@ const express = require('express');
 const classController = require('../controllers/classController');
 const router = express.Router();
 
-/**
- * if a user login is implememented, 
- * this will need to change to a patch request!
- */
-router.post('/class', 
+router.post('/signup',
+  classController.createUser,
+  (req, res) => res.status(200).json(res.locals.user)
+);
+
+router.patch('/class', 
   classController.addClass,
-  (req, res) => res.status(200).json(res.locals.userInfo)
+  (req, res) => res.status(200).json(res.locals.updatedUserInfo)
 );
 
 router.get('/class', 

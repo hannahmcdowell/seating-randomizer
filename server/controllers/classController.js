@@ -13,14 +13,11 @@ const createErr = (errInfo) => {
   };
 };
 
-// middleware to add a new user with a class to the database
-// if user login is implemented, need:
-// 1) createUser middleware
-// 2) addClass (to user) middleware
+// middleware to add a new class to a user's entry in the database
 classController.addClass = (req, res, next) => {
-  const { period, roster } = req.body;
+  const { username, period, roster } = req.body;
   // if missing period or roster from req.body, throw error
-  if (!period || !roster) {
+  if (!username || !period || !roster) {
     return next(createErr({
       method: 'addClass',
       type: 'missing class information on req.body',
@@ -31,18 +28,22 @@ classController.addClass = (req, res, next) => {
   // convert the roster to an array of strings
   const rosterArray = roster.split(', ');
   // define a new user with class object to store in db
-  const userWithClass = { 
-    username: 'Stacy',
-    periods: [period],
-    classes: [{
-      period,
-      roster: rosterArray
-    }]
+  // define a new class object to store in db
+  const newClass = { 
+    period,
+    roster: rosterArray
   };
-  
-  User.create(userWithClass)
+  // update to user
+  const update = {
+    $push: {
+      periods: period,
+      classes: newClass
+    }
+  }
+  // find the user, update and return updated document
+  User.findOneAndUpdate({ username }, update, { new: true })
     .then(data => {
-      res.locals.userInfo = data;
+      res.locals.updatedUserInfo = data;
       console.log('Data returned from db in addClass middleware', data);
       return next();
     })
@@ -55,6 +56,39 @@ classController.addClass = (req, res, next) => {
       }))
     );
 };
+
+classController.createUser = (req, res, next) => {
+  const { username, password } = req.body;
+  // if missing period or roster from req.body, throw error
+  if (!username || !password) {
+    return next(createErr({
+      method: 'createUser',
+      type: 'missing user information on req.body',
+      err: 'incorrect info on req.body',
+      status: 400
+    }));
+  }
+  // define a new user to store in db
+  const user = { 
+    username,
+    password
+  };
+  
+  User.create(user)
+    .then(data => {
+      res.locals.user = data;
+      console.log('Data returned from db in addClass middleware', data);
+      return next();
+    })
+    .catch(err => 
+      next(createErr({
+        method: 'createUser',
+        type: 'saving to database',
+        err,
+        status: 500
+      }))
+    );
+}
 
 classController.classes = (req, res, next) => {
   const requestedUser = req.query;
