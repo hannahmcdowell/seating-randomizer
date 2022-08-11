@@ -89,7 +89,7 @@ const CreateClass = props => {
         </article>
         { /*routes to links may need to update depending on app functionality!*/ }
         <div className="flexContainerBetween">
-          <Link to="/seatingchart" className="backLink">
+          <Link to="/seatingchart">
             <button type="button" className="btn-cancel">
               Cancel
             </button>
