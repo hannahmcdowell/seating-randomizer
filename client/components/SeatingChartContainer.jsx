@@ -27,11 +27,12 @@ const useAsyncData = (username) => {
 
 // custom hook (note call to useState) to handle input
 // prevents need for onChange handlers for each input
-const useInput = init => {
+// if the form has already been submitted, reset the form submittal to be false
+const useInput = (init, bool, resetBool) => {
   const [ value, setValue ] = useState(init);
   const onChange = e => {
     setValue(e.target.value);
-    console.log('Value has changed to:', e.target.value);
+    if (bool) resetBool(false);
   }
   return [ value, onChange ];
 };
@@ -40,12 +41,15 @@ const SeatingChartContainer = props => {
   // use custom hook to asychronously get user data
   // if login is implemented, change the arg to be the name of the user
   const { userData, error, loading } = useAsyncData('Hannah');
-  const [ selectedPeriod, periodOnChange ] = useInput('');
-  const [ selectedGroupSize, groupSizeOnChange ] = useInput('');
   const [ isSubmitted, setIsSubmitted ] = useState(false);
+  const [ selectedPeriod, periodOnChange ] = useInput('', isSubmitted, setIsSubmitted);
+  const [ selectedGroupSize, groupSizeOnChange ] = useInput('', isSubmitted, setIsSubmitted);
+  const [ periodError, setPeriodError ] = useState(null);
+  const [ groupSizeError, setGroupSizeError ] = useState(null);
   const [ roster, setRoster ] = useState(null);
 
   // TODO: add functionality to handle errors from data retrieval
+  // Create jsx for radio buttons based on the user's possible periods
   let radioButtons;
   if (!loading && !error) {
     radioButtons = userData.periods.map((period) => {
@@ -63,6 +67,7 @@ const SeatingChartContainer = props => {
     });
   } 
 
+  // Create jsx for possible group sizes
   const groupSizeOptions = [];
   for (let i = 2; i <= 8; i++) {
     groupSizeOptions.push(
@@ -70,7 +75,26 @@ const SeatingChartContainer = props => {
     );
   }
 
+  // If the period changes, setPeriodError to be null (no error message displayed)
+  useEffect(() => {
+    setPeriodError(null);
+  }, [selectedPeriod]);
+
+  // If the group size changes, setGroupSizeError to be null
+  useEffect(() => {
+    setGroupSizeError(null);
+  }, [selectedGroupSize])
+
+  // Function to handle the submission of the period and the group size
   const handleClick = () => {
+    if (selectedPeriod === '') {
+      setPeriodError('Please choose a period.');
+      return;
+    }
+    if (selectedGroupSize === '' || selectedGroupSize === 'Choose...') {
+      setGroupSizeError('Please choose a group size.');
+      return;
+    }
     for (let i = 0; i < userData.classes.length; i++) {
       if (userData.classes[i].period === selectedPeriod) {
         setRoster(userData.classes[i].roster);
@@ -90,12 +114,16 @@ const SeatingChartContainer = props => {
         <div className="radioButtons">
           {radioButtons}
         </div>
+        {periodError ? (<span className="errorMsg">{periodError}</span>) : null}
         <p className="labelText">Group Size:</p>
         <select value={selectedGroupSize} onChange={groupSizeOnChange}>
           <option>Choose...</option>
           {groupSizeOptions}
         </select>
-        <button type="button" className="btn" onClick={handleClick}>Create seating chart</button>
+        {groupSizeError ? (<span className="errorMsg">{groupSizeError}</span>) : null}
+        <div>
+          <button type="button" className="btn" onClick={handleClick}>Create seating chart</button>
+        </div>
       </div>
       {isSubmitted 
         ? <SeatingChart 
