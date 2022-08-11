@@ -18,10 +18,24 @@ const CreateClass = props => {
   // enables rerouting upon successful class creation
   const navigate = useNavigate();
 
+  // if the user is not logged in, redirect to root
+  useEffect(() => {
+    if (props.username === '') navigate('/', {replace: true});
+  }, []);
+
   const [ period, periodOnChange ] = useInput('');
   const [ roster, rosterOnChange ] = useInput('');
   const [ periodError, setPeriodError ] = useState(null);
   const [ rosterError, setRosterError ] = useState(null);
+
+  // if period changes, setPeriodError to be null (no error message displayed)
+  useEffect(() => {
+    setPeriodError(null);
+  }, [period]);
+  // if roster changes, setRosterError to be null (no error message displayed)
+  useEffect(() => {
+    setRosterError(null);
+  }, [roster]);
 
   const saveClass = () => {
     // check if period or roster is empty
@@ -58,15 +72,6 @@ const CreateClass = props => {
       console.log('CreateClass fetch /api/class: ERROR:', err);
     });
   }
-
-  // if period changes, setPeriodError to be null (no error message displayed)
-  useEffect(() => {
-    setPeriodError(null);
-  }, [period]);
-  // if roster changes, setRosterError to be null (no error message displayed)
-  useEffect(() => {
-    setRosterError(null);
-  }, [roster]);
 
   return (
     <div className="flexCenterContainer">

@@ -39,16 +39,17 @@ h1 {
 button, input, select, textArea {
   font-family: inherit;
   font-size: 1rem;
+  color: #05386B;
 }
 
 input, select, textArea {
   width: 100%;
+  border-radius: 0.3rem;
+  border: 1px solid #379683;
 }
 
 input, textArea {
   padding: 0.5rem 1rem;
-  border-radius: 0.3rem;
-  border: 1px solid #379683;
 }
 
 input:focus, textArea:focus {
@@ -61,6 +62,7 @@ button {
   background: #5cdb95;
   border-radius: 0.3rem;
   border: 1px solid #379683;
+  color: #05386B;
 }
 
 .btn-add {
@@ -122,6 +124,7 @@ input[type="radio"] {
   width: 1rem;
   height: 1rem;
   margin-right: 1rem;
+  box-shadow: none;
 }
 
 .errorMsg {

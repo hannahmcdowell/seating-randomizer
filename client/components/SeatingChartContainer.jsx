@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import SeatingChart from './SeatingChart';
 
@@ -38,6 +38,14 @@ const useInput = (init, bool, resetBool) => {
 };
 
 const SeatingChartContainer = props => {
+  // navigate is an instance of the useNavigate hook
+  // enables rerouting upon successful class creation
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (props.username === '') navigate('/', {replace: true});
+  }, []);
+
   // use custom hook to asychronously get user data
   const { userData, error, loading } = useAsyncData(props.username);
   const [ isSubmitted, setIsSubmitted ] = useState(false);
@@ -46,6 +54,7 @@ const SeatingChartContainer = props => {
   const [ periodError, setPeriodError ] = useState(null);
   const [ groupSizeError, setGroupSizeError ] = useState(null);
   const [ roster, setRoster ] = useState(null);
+
 
   // TODO: add functionality to handle errors from data retrieval
   // Create jsx for radio buttons based on the user's possible periods
