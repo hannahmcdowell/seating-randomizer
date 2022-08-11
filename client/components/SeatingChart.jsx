@@ -20,6 +20,7 @@ const randomize = (array) => {
 // note: no singletons! group work only :)
 const randomGroups = (array, size) => {
   const randomArray = randomize(array);
+  size = parseInt(size);
   
   if (size >= randomArray.length) return [randomArray];
 
@@ -41,6 +42,7 @@ const randomGroups = (array, size) => {
 const SeatingChart = props => {
 
   const groups = randomGroups(props.classRoster, props.groupSize);
+  console.log(groups);
   const groupCards = groups.map((group, index) => {
     return (
       <Card 

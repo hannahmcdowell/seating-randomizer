@@ -32,7 +32,7 @@ classController.addClass = (req, res, next) => {
   const rosterArray = roster.split(', ');
   // define a new user with class object to store in db
   const userWithClass = { 
-    username: 'Hannah',
+    username: 'Stacy',
     periods: [period],
     classes: [{
       period,
