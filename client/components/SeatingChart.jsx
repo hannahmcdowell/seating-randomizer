@@ -39,6 +39,7 @@ const SeatingChart = props => {
   const { userData, error, loading } = useAsyncData('Hannah');
   const [ selectedPeriod, periodOnChange ] = useInput('');
 
+  // TODO: add functionality to handle errors
   let radioButtons;
   if (!loading && !error) {
     radioButtons = userData.periods.map((period, i) => {
@@ -66,6 +67,17 @@ const SeatingChart = props => {
         <div className="radioButtons">
           {radioButtons}
         </div>
+        <p className="labelText">Group Size:</p>
+        <select>
+          <option>Choose...</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+        </select>
       </div>
     </section>
   );
