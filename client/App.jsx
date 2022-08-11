@@ -16,6 +16,8 @@ const App = props => {
         <Routes>
           <Route path="class" element={<CreateClass />} />
           <Route path="seatingchart" element={<SeatingChartContainer />} />
+          <Route path="login" element={<Login />} />
+          <Route path="/" element={<SignUp />} />
         </Routes>
       </main>
     </div>

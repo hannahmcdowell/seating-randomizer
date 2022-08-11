@@ -107,6 +107,11 @@ const SeatingChartContainer = props => {
   return (
     <section className="seatingChartContainer">
       <div className="sideBar">
+          <Link to="/class">
+            <button type="button" className="btn-add">
+              Add a class
+            </button>
+          </Link>
         <div className="inputBox">
           <header className="pageHeader">
               <h2>Make Groups</h2>    
