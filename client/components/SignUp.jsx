@@ -14,7 +14,6 @@ const useInput = init => {
 }
 
 const SignUp = (props) => {
-
   // enables rerouting upon successful user account creation
   const navigate = useNavigate();
 
@@ -63,7 +62,7 @@ const SignUp = (props) => {
         navigate('/seatingchart');
       })
       .catch(err => {
-        console.log('SignUp fetch /api/class: ERROR:', err);
+        console.log('SignUp fetch /api/signup: ERROR:', err);
       });
   }
 

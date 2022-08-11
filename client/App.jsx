@@ -5,6 +5,7 @@ import './stylesheets/styles.css';
 
 import CreateClass from './components/CreateClass';
 import SeatingChartContainer from './components/SeatingChartContainer';
+import Login from './components/Login';
 import SignUp from './components/SignUp';
 
 const App = props => {
@@ -20,7 +21,7 @@ const App = props => {
         <Routes>
           <Route path="class" element={<CreateClass username={username} />} />
           <Route path="seatingchart" element={<SeatingChartContainer username={username}/>} />
-          {/* <Route path="login" element={<Login setUsername={setUsername}/>} /> */}
+          <Route path="login" element={<Login setUsername={setUsername}/>} />
           <Route path="/" element={<SignUp setUsername={setUsername}/>} />
         </Routes>
       </main>
