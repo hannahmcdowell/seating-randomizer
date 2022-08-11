@@ -10,9 +10,8 @@ const Card = props => {
   });
 
   return (
-    <div>
-      <div>Group: {props.number}</div>
-      <div>Group members:</div>
+    <div className="card">
+      <h3 className="cardTitle">Group: {props.number}</h3>
       <ul>
         {list}
       </ul>

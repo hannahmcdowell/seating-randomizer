@@ -54,13 +54,14 @@ const SeatingChart = props => {
   })
 
   return (
-    <section>
-      <header>
-        <h3>Period: {props.period}</h3>
-        <h3>Group Size: {props.groupSize}</h3>
-      </header>
-      <div>
-        {groupCards}
+    <section className="groupContainer">
+      <div className="flexContainer">
+        <header className="gridHeader">
+          <h3>Period: {props.period}, Group Size: {props.groupSize}</h3>
+        </header>
+        <div className="cardsContainer">
+          {groupCards}
+        </div>
       </div>
     </section>
   )

@@ -54,7 +54,7 @@ const SeatingChartContainer = props => {
   if (!loading && !error) {
     radioButtons = userData.periods.map((period) => {
       return (
-        <label key={period}>
+        <label className="radioLabel" key={period}>
           <input 
             type="radio" 
             value={period} 
@@ -106,23 +106,29 @@ const SeatingChartContainer = props => {
 
   return (
     <section className="seatingChartContainer">
-      <header className="pageHeader">
-          <h2>Seating Chart</h2>    
-      </header>
       <div className="sideBar">
-        <p className="labelText">Periods:</p>
-        <div className="radioButtons">
-          {radioButtons}
-        </div>
-        {periodError ? (<span className="errorMsg">{periodError}</span>) : null}
-        <p className="labelText">Group Size:</p>
-        <select value={selectedGroupSize} onChange={groupSizeOnChange}>
-          <option>Choose...</option>
-          {groupSizeOptions}
-        </select>
-        {groupSizeError ? (<span className="errorMsg">{groupSizeError}</span>) : null}
-        <div>
-          <button type="button" className="btn" onClick={handleClick}>Create seating chart</button>
+        <div className="inputBox">
+          <header className="pageHeader">
+              <h2>Make Groups</h2>    
+          </header>
+          <div className="inputField">
+            <p className="labelText">Choose a Period:</p>
+            <div className="radioButtons">
+              {radioButtons}
+            </div>
+            {periodError ? (<span className="errorMsg">{periodError}</span>) : null}
+          </div>
+          <div className="inputField">
+            <p className="labelText">Group Size:</p>
+            <select value={selectedGroupSize} onChange={groupSizeOnChange}>
+              <option>Choose...</option>
+              {groupSizeOptions}
+            </select>
+            {groupSizeError ? (<span className="errorMsg">{groupSizeError}</span>) : null}
+          </div>
+          <div className="inputField">
+            <button type="button" className="btn" onClick={handleClick}>Create groups</button>
+          </div>
         </div>
       </div>
       {isSubmitted 

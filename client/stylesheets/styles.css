@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  line-height: 1.5;
+  font-size: 1rem;
+  color: #05386B;
+  background: linear-gradient(#5cdb95, #edf5e1);
+}
+
+h1 {
+  text-align: center;
+  padding: 4rem;
+  font-size: 3.5rem;
+  font-weight: 600;
+}
+
+.flexCenterContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.inputBox {
+  background-color: #edf5e1;
+  padding: 3rem;
+  border-radius: 0.3rem;
+  border: 1px solid #379683;
+  box-shadow: 1px 1px 8px 1px #5cdb95;
+}
+
+button, input, select, textArea {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+input, select, textArea {
+  width: 100%;
+}
+
+input, textArea {
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid #379683;
+}
+
+input:focus, textArea:focus {
+  box-shadow: 1px 1px 8px 1px #5cdb95;
+  outline: none;
+}
+
+button {
+  padding: 0.25rem 0.5rem;
+  background: #5cdb95;
+  border-radius: 0.3rem;
+  border: 1px solid #379683;
+}
+
+.btn-cancel {
+  background: #edf5e1;
+}
+
+button:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 8px 1px #5cdb95;
+}
+
+.flexContainerBetween {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputField {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.seatingChartContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.sideBar {
+  grid-column: 1 / 2;
+  padding: 0 2rem;
+}
+
+.groupContainer {
+  grid-column: 2 / span 3;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="radio"] {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 1rem;
+}
+
+.errorMsg {
+  color: #DC3545;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #05386B;
+  color: #edf5e1;
+  padding: 1rem 4rem;
+  margin: 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid #379683;
+  box-shadow: 1px 1px 8px 1px #5cdb95;
+}
+
+.cardTitle {
+  border-bottom: 1px solid #edf5e1;
+  margin-bottom: 1rem;
+}
+
+.card ul {
+  list-style: none;
+}

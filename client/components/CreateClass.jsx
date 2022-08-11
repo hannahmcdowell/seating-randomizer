@@ -68,32 +68,36 @@ const CreateClass = props => {
   }, [roster]);
 
   return (
-    <section className="createClass">
-      <header className="pageHeader">
-          <h2>Add a class</h2>    
-      </header>
-      <article className="createClassCard">
-        <div className="createClassField">
-          <label htmlFor="period">Period: </label>
-          <input name="period" value={period} onChange={periodOnChange} />
-          {periodError ? (<span className="errorMsg">{periodError}</span>) : null}
-        </div>
-        <div className="createClassField">
-          <label htmlFor="roster">Please enter roster with names separated by commas: </label>
-          <div>
-            <textarea name="roster" value={roster} onChange={rosterOnChange} />
+    <div className="flexCenterContainer">
+      <section className="inputBox">
+        <header className="pageHeader">
+            <h2>Add a class</h2>    
+        </header>
+        <article className="createClassCard">
+          <div className="inputField">
+            <label htmlFor="period">Period: </label>
+            <input name="period" value={period} onChange={periodOnChange} />
+            {periodError ? (<span className="errorMsg">{periodError}</span>) : null}
           </div>
-          {rosterError ? (<span className="errorMsg">{rosterError}</span>) : null}
+          <div className="inputField">
+            <label htmlFor="roster">Please enter roster with names separated by commas: </label>
+            <div>
+              <textarea name="roster" value={roster} onChange={rosterOnChange} />
+            </div>
+            {rosterError ? (<span className="errorMsg">{rosterError}</span>) : null}
+          </div>
+        </article>
+        { /*routes to links may need to update depending on app functionality!*/ }
+        <div className="flexContainerBetween">
+          <Link to="/seatingchart" className="backLink">
+            <button type="button" className="btn-cancel">
+              Cancel
+            </button>
+          </Link>
+          <button type="button" className="btn" onClick={saveClass}>Create</button>
         </div>
-      </article>
-      { /*routes to links may need to update depending on app functionality!*/ }
-      <Link to="/seatingchart" className="backLink">
-        <button type="button" className="btn">
-          Cancel
-        </button>
-      </Link>
-      <button type="button" className="btn" onClick={saveClass}>Create</button>
-    </section>
+      </section>
+    </div>
   );
 }
 
