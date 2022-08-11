@@ -47,7 +47,7 @@ const SignUp = (props) => {
       password
     };
 
-    fetch('/api/class', {
+    fetch('/api/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'Application/JSON'

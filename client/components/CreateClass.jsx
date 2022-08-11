@@ -34,13 +34,14 @@ const CreateClass = props => {
       return;
     } 
     const body = {
+      username: props.username,
       period,
       roster
     };
-    // use fetch to make a POST request to /api/class
-    // upon successful POST request, navigate to SeatingChart
+    // use fetch to make a PATCH request to /api/class
+    // upon successful PATCH request, navigate to SeatingChart
     fetch('/api/class', {
-      method: 'POST',
+      method: 'PATCH',
       headers: {
         'Content-Type': 'Application/JSON'
       },
