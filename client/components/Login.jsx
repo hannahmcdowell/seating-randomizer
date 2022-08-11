@@ -82,17 +82,23 @@ const Login = (props) => {
           <div className="inputField">
             <label htmlFor="username">Username:</label>
             <input name="username" value={inputUser} onChange={inputUserOnChange} />
-            {usernameError ? (<span className="errorMsg">{usernameError}</span>) : null}
+            <div>
+              {usernameError ? (<span className="errorMsg">{usernameError}</span>) : null}
+            </div>
           </div>
           <div className="inputField">
             <label htmlFor="password">Password:</label>
             <input name="password" type="password" value={inputPass} onChange={inputPassOnChange} />
-            {passwordError ? (<span className="errorMsg">{passwordError}</span>) : null}
+            <div>
+              {passwordError ? (<span className="errorMsg">{passwordError}</span>) : null}
+            </div>
           </div>
-          {loginError ? (<span className="errorMsg">{loginError}</span>) : null}
+          <div>
+            {loginError ? (<span className="errorMsg">{loginError}</span>) : null}
+          </div>
         </article>
         <div className="flexContainerBetween">
-          <Link to="/signup">
+          <Link to="/">
             <button type="button" className="btn-cancel">
               Sign Up
             </button>

@@ -76,12 +76,16 @@ const SignUp = (props) => {
           <div className="inputField">
             <label htmlFor="username">Username:</label>
             <input name="username" value={possUsername} onChange={possUsernameOnChange} />
-            {usernameError ? (<span className="errorMsg">{usernameError}</span>) : null}
+            <div>
+              {usernameError ? (<span className="errorMsg">{usernameError}</span>) : null}
+            </div>
           </div>
           <div className="inputField">
             <label htmlFor="password">Password:</label>
             <input name="password" type="password" value={password} onChange={passwordOnChange} />
-            {passwordError ? (<span className="errorMsg">{passwordError}</span>) : null}
+            <div>
+              {passwordError ? (<span className="errorMsg">{passwordError}</span>) : null}
+            </div>
           </div>
         </article>
         <div className="flexContainerBetween">
