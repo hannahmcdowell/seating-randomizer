@@ -59,9 +59,11 @@ const Login = (props) => {
       .then(res => res.json())
       .then(data => {
         console.log('Data returned from db in Login frontend file', data);
-        // TO DO: if data is null (no user/pass match), 
-        // display error message to user
-
+        // if data contains an error, display error message to user
+        if (data.error) {
+          setLoginError(data.error);
+          return;
+        }
         // set the current user to be the logged in user
         props.setUsername(inputUser);
         // navigate to the seating chart page

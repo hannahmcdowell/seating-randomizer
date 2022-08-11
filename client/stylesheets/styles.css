@@ -90,6 +90,7 @@ button:hover {
 .flexContainerBetween {
   display: flex;
   justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .inputField {
