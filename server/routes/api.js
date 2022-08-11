@@ -7,6 +7,11 @@ router.post('/signup',
   (req, res) => res.status(200).json(res.locals.user)
 );
 
+router.post('/login', 
+  classController.verifyUser,
+  (req, res) => res.status(200).json(res.locals.user)
+);
+
 router.patch('/class', 
   classController.addClass,
   (req, res) => res.status(200).json(res.locals.updatedUserInfo)

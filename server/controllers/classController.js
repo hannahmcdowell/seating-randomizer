@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const bcrypt = require('bcrypt');
 
 const classController = {};
 
@@ -86,6 +87,52 @@ classController.createUser = (req, res, next) => {
         type: 'saving to database',
         err,
         status: 500
+      }))
+    );
+}
+
+classController.verifyUser = (req, res, next) => {
+  const { username, password } = req.body;
+  // if missing period or roster from req.body, throw error
+  if (!username) {
+    return next(createErr({
+      method: 'verifyUser',
+      type: 'missing username or password on req.body',
+      err: 'incorrect info on req.body',
+      status: 400
+    }));
+  }
+  // attempt to find the user with the given username
+  User.findOne({username}).exec()
+    .then(data => {
+      console.log('Data returned from findOne in verifyUser', data);
+      if (data === null) {
+        res.locals.user = {error: 'Username and/or password not found.'};
+        return next();
+      }
+      // compare input password with the encrypted password
+      bcrypt.compare(password, data.password)
+        .then((bool) => {
+          if (bool) {
+            res.locals.user = data;
+          } else {
+            res.locals.user = {error: 'Username and/or password not found.'};
+          }
+          return next();
+        })
+        .catch((err) => 
+          next(createErr({
+            method: 'verifyUser',
+            type: 'bcrypt compare method error',
+            err
+          }))
+        );
+    })
+    .catch((err) => 
+      next(createErr({
+        method: 'verifyUser',
+        type: 'findOne method error',
+        err
       }))
     );
 }
