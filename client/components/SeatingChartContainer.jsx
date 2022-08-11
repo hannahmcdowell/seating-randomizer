@@ -53,15 +53,17 @@ const SeatingChartContainer = props => {
   if (!loading && !error) {
     radioButtons = userData.periods.map((period) => {
       return (
-        <label className="radioLabel" key={period}>
-          <input 
-            type="radio" 
-            value={period} 
-            checked={selectedPeriod === period} 
-            onChange={periodOnChange}
-          />
-          {period}
-        </label>
+        <div>
+          <label className="radioLabel" key={period}>
+            <input 
+              type="radio" 
+              value={period} 
+              checked={selectedPeriod === period} 
+              onChange={periodOnChange}
+            />
+            {period}
+          </label>
+        </div>
       );
     });
   } 
