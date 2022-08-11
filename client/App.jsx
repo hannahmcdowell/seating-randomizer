@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import CreateClass from './components/CreateClass';
-import SeatingChart from './components/SeatingChart';
+import SeatingChartContainer from './components/SeatingChartContainer';
 
 const App = props => {
   return (
@@ -10,7 +10,7 @@ const App = props => {
       <main className="main">
         <Routes>
           <Route path="class" element={<CreateClass />} />
-          <Route path="seatingchart" element={<SeatingChart />} />
+          <Route path="seatingchart" element={<SeatingChartContainer />} />
         </Routes>
       </main>
     </div>
