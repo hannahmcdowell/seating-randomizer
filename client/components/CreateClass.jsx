@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSchool } from '@fortawesome/free-solid-svg-icons'
 
 // custom hook (note the call to useState) to handle input boxes
 // prevents need for onChange handlers for each input
@@ -77,7 +79,7 @@ const CreateClass = props => {
     <div className="flexCenterContainer">
       <section className="inputBox">
         <header className="pageHeader">
-            <h2>Add a class</h2>    
+            <h2>Add a class<span className="icon"><FontAwesomeIcon icon={faSchool} /></span></h2>    
         </header>
         <article className="createClassCard">
           <div className="inputField">

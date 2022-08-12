@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDice } from '@fortawesome/free-solid-svg-icons'
 
 import './stylesheets/styles.css';
 
@@ -15,12 +17,12 @@ const App = props => {
   return (
     <div className="router">
       <header>
-        <h1>Welcome to Random Seat</h1>
+        <h1>Seat Randomizer<span className="dice"><FontAwesomeIcon icon={faDice} /></span></h1>
       </header>
       <main className="main">
         <Routes>
           <Route path="class" element={<CreateClass username={username} />} />
-          <Route path="seatingchart" element={<SeatingChartContainer username={username}/>} />
+          <Route path="seatingchart" element={<SeatingChartContainer username={username} setUsername={setUsername} />} />
           <Route path="login" element={<Login setUsername={setUsername}/>} />
           <Route path="/" element={<SignUp setUsername={setUsername}/>} />
         </Routes>

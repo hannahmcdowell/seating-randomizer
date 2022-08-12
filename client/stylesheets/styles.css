@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,18 +11,25 @@ html, body {
 }
 
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Quicksand', Helvetica, Arial, sans-serif;
+  /* font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
   line-height: 1.5;
   font-size: 1rem;
   color: #05386B;
   background: linear-gradient(#5cdb95, #edf5e1);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 h1 {
   text-align: center;
   padding: 4rem;
   font-size: 3.5rem;
-  font-weight: 600;
+  font-weight: 800;
+}
+
+.dice {
+  margin-left: 1rem;
 }
 
 .flexCenterContainer {
@@ -76,8 +85,19 @@ button {
   box-shadow: 1px 1px 8px 1px #5cdb95;
 }
 
-.btn-add:hover {
+.btn-add:hover, btn-logout:hover {
   box-shadow: 1px 1px 8px 1px #379683;
+}
+
+.btn-logout {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.5rem 0.5rem;
+  background: #379683;
+  border: 1px solid #05386B;
+  color: #edf5e1;
+  font-weight: 600;
+  box-shadow: 1px 1px 8px 1px #edf5e1;
 }
 
 .btn-cancel {
@@ -118,6 +138,10 @@ button:hover {
 .flexContainer {
   display: flex;
   flex-direction: column;
+}
+
+.icon {
+  margin-left: 0.5rem;
 }
 
 input[type="radio"] {

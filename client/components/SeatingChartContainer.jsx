@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons'
 
 import SeatingChart from './SeatingChart';
 
@@ -95,6 +97,11 @@ const SeatingChartContainer = props => {
     setGroupSizeError(null);
   }, [selectedGroupSize])
 
+  // Function to logout the user
+  const logout = () => {
+    setUsername('');
+  };
+
   // Function to handle the submission of the period and the group size
   const handleClick = () => {
     if (selectedPeriod === '') {
@@ -124,7 +131,7 @@ const SeatingChartContainer = props => {
           </Link>
         <div className="inputBox">
           <header className="pageHeader">
-              <h2>Make Groups</h2>    
+              <h2>Groups<span className="icon"><FontAwesomeIcon icon={faPeopleGroup} /></span></h2>    
           </header>
           <div className="inputField">
             <p className="labelText">Choose a Period:</p>
@@ -142,9 +149,14 @@ const SeatingChartContainer = props => {
             {groupSizeError ? (<span className="errorMsg">{groupSizeError}</span>) : null}
           </div>
           <div className="inputField">
-            <button type="button" className="btn" onClick={handleClick}>Create groups</button>
+            <button type="button" className="btn" onClick={handleClick}>Roll the dice!</button>
           </div>
         </div>
+          <Link to="/">
+            <button type="button" className="btn-logout" onClick={logout}>
+              Log out
+            </button>
+          </Link>
       </div>
       {isSubmitted 
         ? <SeatingChart 
