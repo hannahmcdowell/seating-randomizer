@@ -2,13 +2,13 @@ const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const apiRouter = require('./routes/api');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // connect to mongodb 
-const mongoURI = 'mongodb://localhost/solo-project';
-mongoose.connect(mongoURI, {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
