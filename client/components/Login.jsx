@@ -58,7 +58,6 @@ const Login = (props) => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('Data returned from db in Login frontend file', data);
         // if data contains an error, display error message to user
         if (data.error) {
           setLoginError(data.error);

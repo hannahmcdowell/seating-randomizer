@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 const SALT_WORK_FACTOR = 12;
 
-// if implmenting login, change so that username must be unique.
 const userSchema = new Schema({
   username: {type: String, required: true},
   password: {type: String, required: true},

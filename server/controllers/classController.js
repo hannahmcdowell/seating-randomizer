@@ -45,7 +45,6 @@ classController.addClass = (req, res, next) => {
   User.findOneAndUpdate({ username }, update, { new: true })
     .then(data => {
       res.locals.updatedUserInfo = data;
-      console.log('Data returned from db in addClass middleware', data);
       return next();
     })
     .catch(err => 
@@ -78,7 +77,6 @@ classController.createUser = (req, res, next) => {
   User.create(user)
     .then(data => {
       res.locals.user = data;
-      console.log('Data returned from db in addClass middleware', data);
       return next();
     })
     .catch(err => 
@@ -105,7 +103,6 @@ classController.verifyUser = (req, res, next) => {
   // attempt to find the user with the given username
   User.findOne({username}).exec()
     .then(data => {
-      console.log('Data returned from findOne in verifyUser', data);
       if (data === null) {
         res.locals.user = {error: 'Username and/or password not found.'};
         return next();
@@ -151,7 +148,6 @@ classController.classes = (req, res, next) => {
 
   User.findOne(requestedUser).exec()
     .then(data => {
-      console.log('Data returned from db in classes middleware', data);
       if (data === null) {
         return next(createErr({
           method: 'classes',

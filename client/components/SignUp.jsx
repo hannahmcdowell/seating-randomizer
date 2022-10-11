@@ -55,7 +55,6 @@ const SignUp = (props) => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('Data returned from db in SignUp frontend file', data);
         // set the current user to be the logged in user
         props.setUsername(possUsername);
         // navigate to the seating chart page

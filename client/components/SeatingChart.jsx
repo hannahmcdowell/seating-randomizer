@@ -42,7 +42,6 @@ const randomGroups = (array, size) => {
 const SeatingChart = props => {
 
   const groups = randomGroups(props.classRoster, props.groupSize);
-  console.log(groups);
   const groupCards = groups.map((group, index) => {
     return (
       <Card 
