@@ -65,9 +65,6 @@ const CreateClass = props => {
     })
     .then(res => res.json())
     .then(data => {
-      console.log('Data returned from db in CreateClass frontend file', data);
-    })
-    .then(() => {
       navigate('/seatingchart');
     })
     .catch(err => {
