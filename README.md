@@ -60,13 +60,7 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
+    <li><a href="#getting-started">Getting Started</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
@@ -101,14 +95,9 @@ A simple tool for teachers to generate random seating charts for all class perio
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple steps.
 
-### Prerequisites
-
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
+1. Get a MongoDB URI from [MongoDB Atlas](https://www.mongodb.com/atlas/database?tck=docs_server)
 2. Clone the repo
    ```sh
    git clone https://github.com/hannahmcdowell/seating-randomizer.git
@@ -117,9 +106,9 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
+4. Enter your MongoDB URI in `.env` 
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   const MONGO_URI = **************;
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -129,9 +118,18 @@ To get a local copy up and running follow these simple example steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+1. Create an account.
+2. Sign in.
+3. Add a class roster.
+4. Make a random seating chart!
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+<br />
+<div align="center">
+  <a href="https://github.com/hannahmcdowell/seating-randomizer">
+    <img src="assets/exampleScreen.png" alt="Logo">
+  </a>
+</div>
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -140,10 +138,9 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- Ability to temporarily remove students from the seating chart if absent
+- Teachers should be able to update rosters
+- Enable teachers to identify students who don't work well together and the algorithm will reduce the probability that they are put into a group
 
 See the [open issues](https://github.com/hannahmcdowell/seating-randomizer/issues) for a full list of proposed features (and known issues).
 
@@ -172,7 +169,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the [MIT](https://opensource.org/licenses/MIT) License. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -181,7 +178,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Hannah McDowell - [LinkedIn](https://www.linkedin.com/in/hannah-lisbeth-mcdowell/)
 
 Project Link: [https://github.com/hannahmcdowell/seating-randomizer](https://github.com/hannahmcdowell/seating-randomizer)
 
@@ -192,9 +189,9 @@ Project Link: [https://github.com/hannahmcdowell/seating-randomizer](https://git
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* Thanks to [https://github.com/Envoy-VC/awesome-badges](https://github.com/Envoy-VC/awesome-badges) for the Awesome Badges
+* Thanks to [https://github.com/othneildrew/Best-README-Template](https://github.com/othneildrew/Best-README-Template) for the best README template
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
